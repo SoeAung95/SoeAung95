@@ -1,1 +1,7 @@
+AIzaSyD9Y-UKPP8t_sg7cFjpnF9KCXEGya3PfOk
+import pyotp
 
+# Secret Key for OTP
+secret = "JBSWY3DPEHPK3PXP"  # Example Key
+totp = pyotp.TOTP(secret)
+print("Your OTP is:", totp.now())
