@@ -1,7 +1,21 @@
-AIzaSyD9Y-UKPP8t_sg7cFjpnF9KCXEGya3PfOk
-import pyotp
+name: OTP Test
 
-# Secret Key for OTP
-secret = "JBSWY3DPEHPK3PXP"  # Example Key
-totp = pyotp.TOTP(secret)
-print("Your OTP is:", totp.now())
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyotp
+
+      - name: Run OTP script
+        run: python otp_test.py
